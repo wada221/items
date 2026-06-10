@@ -3,49 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FREE ITEM</title>
+<title>🎁 FREE ITEM 🎁</title>
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
 min-height:100vh;
 background:linear-gradient(135deg,#ff4db8,#ff99dd);
-font-family:Arial,sans-serif;
 text-align:center;
 color:white;
 }
 
 h1{
-padding-top:30px;
-font-size:50px;
+font-size:55px;
+margin-top:40px;
+text-shadow:2px 2px 10px rgba(0,0,0,.3);
 }
 
 .menu{
 display:flex;
 justify-content:center;
-gap:20px;
+align-items:center;
 flex-wrap:wrap;
+gap:25px;
 margin-top:80px;
 }
 
 .btn{
 background:white;
 color:#ff1493;
-width:220px;
-padding:20px;
-border-radius:20px;
-font-size:24px;
+width:230px;
+padding:25px;
+border-radius:25px;
+font-size:28px;
 font-weight:bold;
 cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
 }
 
 .icon{
-font-size:50px;
+font-size:60px;
 display:block;
 margin-bottom:10px;
 }
@@ -53,7 +61,10 @@ margin-bottom:10px;
 #overlay{
 display:none;
 position:fixed;
-inset:0;
+top:0;
+left:0;
+width:100%;
+height:100%;
 background:black;
 z-index:9999;
 }
@@ -68,7 +79,9 @@ object-fit:cover;
 position:absolute;
 top:10px;
 right:20px;
-font-size:40px;
+font-size:50px;
+font-weight:bold;
+color:white;
 cursor:pointer;
 z-index:10000;
 }
@@ -102,29 +115,29 @@ LIÊN QUÂN
 
 <div class="close" onclick="closeVideo()">✖</div>
 
-<video id="video" autoplay loop controls>
-<source src="video.mp4" type="video/mp4">
+<video id="video" autoplay loop controls playsinline>
+<source src="https://files.catbox.moe/kfvtdb.mp4" type="video/mp4">
 </video>
 
 </div>
 
 <script>
 function openVideo(){
-const overlay=document.getElementById("overlay");
-const video=document.getElementById("video");
+let overlay=document.getElementById("overlay");
+let video=document.getElementById("video");
 
 overlay.style.display="block";
 video.currentTime=0;
 video.play();
 
-if(document.documentElement.requestFullscreen){
-document.documentElement.requestFullscreen().catch(()=>{});
+if(video.requestFullscreen){
+video.requestFullscreen();
 }
 }
 
 function closeVideo(){
-const overlay=document.getElementById("overlay");
-const video=document.getElementById("video");
+let overlay=document.getElementById("overlay");
+let video=document.getElementById("video");
 
 video.pause();
 overlay.style.display="none";
